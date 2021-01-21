@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
 
-// // クラスの場合
-// class App extends Component{
-//   render(){
-//     return <h1>Hello world!</h1>;
-//   }
-// }
-
 function App() {
   return (  // 関数コンポーネントの場合はdivで括る必要がある→React.Fragmentで余計なdivを作らないことができる
     <React.Fragment>
@@ -15,10 +8,5 @@ function App() {
     </React.Fragment>
   )
 }
-
-// 下記のようにトランスファイルされる
-// function App(){
-//   return React.createElement('div', null, 'Hello W orld!!!');
-// }
 
 export default App;

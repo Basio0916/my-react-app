@@ -1,47 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types'
+import React, {Component} from 'react'; // {}はNamed Exportを呼び出す
 
-// // クラスコンポーネント
-// class App extends Component{
-//   render(){
-//     return <div>Hi!</div>
-//   }
-// }
+// Stateはクラスコンポーネントで利用できる
 
-// 関数コンポーネント
 function App(){
-  const profiles = [
-    {
-      name: "Taro",
-      age: "21" // ←型が違うのでワーニングが出る （一応表示は変わる）
-    },
-    {
-      name: "Makoto",
-      age: 28
-    },
-    {
-      name: "Basio" // ←　ageが無いのでワーニングが出る??何かおかしい
-    }
-  ]
-  return(
-    <div>
-      {
-        profiles.map((profile, index)=>{
-          return <User name={profile.name} age={profile.age} key={index}/>
-        })
-      }
-    </div>
-  )
+  return <Counter />
 }
 
-function User(props){
-  return <div>Hi! I am {props.name}, and {props.age} years old!</div>
-}
+class Counter extends Component{  // Component = React.Component
+  constructor(props){
+    super(props)
+    this.state = {count : 0}
+  }
 
-// 型チェックをPropTypesを用いて行う
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired // isRequiredは必須要素
+  handlePlusButton(){
+    console.log("handlePlusButton");
+    // this.state.count++; // これじゃレンダリングされない 直接Stateを更新するのは禁止されている
+    this.setState({count: this.state.count + 1});    // このようにして更新する　render()も実行される
+  }
+
+  handleMinusButton(){
+    this.setState({count: this.state.count - 1});    // このようにして更新する
+  }
+
+  render(){
+    console.log(this.state)
+    return (
+      <React.Fragment>
+        <p>counter: {this.state.count}</p>
+        <input type="button" onClick={this.handlePlusButton.bind(this)} value="+"/>
+        <input type="button" onClick={this.handleMinusButton.bind(this)} value="-"/>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;

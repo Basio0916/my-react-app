@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 // // クラスコンポーネント
 // class App extends Component{
@@ -12,14 +13,14 @@ function App(){
   const profiles = [
     {
       name: "Taro",
-      age: 20
+      age: "21" // ←型が違うのでワーニングが出る （一応表示は変わる）
     },
     {
       name: "Makoto",
       age: 28
     },
     {
-      name: "Basio",
+      name: "Basio" // ←　ageが無いのでワーニングが出る??何かおかしい
     }
   ]
   return(
@@ -37,8 +38,10 @@ function User(props){
   return <div>Hi! I am {props.name}, and {props.age} years old!</div>
 }
 
-User.defaultProps ={
-  age: 1
+// 型チェックをPropTypesを用いて行う
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired // isRequiredは必須要素
 }
 
 export default App;

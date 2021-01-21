@@ -10,9 +10,14 @@
 
 // 関数コンポーネントの場合
 function App() {
-  const child = "Basio";
-  const dom = <h1 className="App"/* classNameはHTML上のclassに変更される */>Hi, {child}</h1> // {}を使うことで変数を使える
-  return dom;
+  // 1 関数を宣言する場合
+  // function clicked(){
+  //   console.log("I am clicked!");
+  // }
+  // return <input type="text" onClick={clicked}></input>
+
+  //　2 無名関数を使う場合
+  return <input type="text" onClick={()=>{console.log("I am clicked!")}}/>
 }
 
 // 下記のようにトランスファイルされる

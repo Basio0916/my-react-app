@@ -1,5 +1,4 @@
-// import {Component} from 'react';
-
+import React, {Component} from 'react';
 
 // // クラスの場合
 // class App extends Component{
@@ -8,16 +7,13 @@
 //   }
 // }
 
-// 関数コンポーネントの場合
 function App() {
-  // 1 関数を宣言する場合
-  // function clicked(){
-  //   console.log("I am clicked!");
-  // }
-  // return <input type="text" onClick={clicked}></input>
-
-  //　2 無名関数を使う場合
-  return <input type="text" onClick={()=>{console.log("I am clicked!")}}/>
+  return (  // 関数コンポーネントの場合はdivで括る必要がある→React.Fragmentで余計なdivを作らないことができる
+    <React.Fragment>
+      <label htmlFor="bar">Label: </label>
+      <input type="text" name="bar" onChange={()=>{console.log("I am clicked.")}}/>
+    </React.Fragment>
+  )
 }
 
 // 下記のようにトランスファイルされる

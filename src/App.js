@@ -1,12 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-function App() {
-  return (  // 関数コンポーネントの場合はdivで括る必要がある→React.Fragmentで余計なdivを作らないことができる
-    <React.Fragment>
-      <label htmlFor="bar">Label: </label>
-      <input type="text" name="bar" onChange={()=>{console.log("I am clicked.")}}/>
-    </React.Fragment>
+// // クラスコンポーネント
+// class App extends Component{
+//   render(){
+//     return <div>Hi!</div>
+//   }
+// }
+
+// 関数コンポーネント
+function App(){
+  return(
+    <div>
+      <Cat />
+      <Cat />
+      <Cat />
+      <Cat />
+    </div>
   )
+}
+
+function Cat(){
+  return <div>Meow!</div>
 }
 
 export default App;

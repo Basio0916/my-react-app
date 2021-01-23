@@ -10,7 +10,7 @@ class App extends Component{  // Component = React.Component
 
     return (
       <React.Fragment>
-        <p>value: {props.value}</p>
+        <p>count: {props.count}</p>
         {/* <input type="button" onClick={this.handlePlusButton.bind(this)} value="+"/>
         <input type="button" onClick={this.handleMinusButton.bind(this)} value="-"/> */}
         <input type="button" onClick={props.increment} value="+"/>
@@ -21,7 +21,7 @@ class App extends Component{  // Component = React.Component
   }
 }
 
-const mapStateToProps = state => ({value: state.count.value});
+const mapStateToProps = state => ({count: state.count.value});
 // const mapDispatchToProps = dispatch => ({
 //   increment: ()=>dispatch(increment()),
 //   decrement: ()=>dispatch(decrement())

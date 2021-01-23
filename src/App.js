@@ -27,8 +27,11 @@ class Counter extends Component{  // Component = React.Component
     return (
       <React.Fragment>
         <p>counter: {this.state.count}</p>
-        <input type="button" onClick={this.handlePlusButton.bind(this)} value="+"/>
-        <input type="button" onClick={this.handleMinusButton.bind(this)} value="-"/>
+        {/* <input type="button" onClick={this.handlePlusButton.bind(this)} value="+"/>
+        <input type="button" onClick={this.handleMinusButton.bind(this)} value="-"/> */}
+        <input type="button" onClick={()=>this.handlePlusButton()} value="+"/>
+        <input type="button" onClick={()=>this.handleMinusButton()} value="-"/>
+        
       </React.Fragment>
     )
   }

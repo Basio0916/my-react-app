@@ -21,7 +21,7 @@ class App extends Component{  // Component = React.Component
   }
 }
 
-const mapStateToProps = state => ({count: state.count.value});
+const mapStateToProps = state => ({count: state.count.value});git
 // const mapDispatchToProps = dispatch => ({
 //   increment: ()=>dispatch(increment()),
 //   decrement: ()=>dispatch(decrement())

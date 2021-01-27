@@ -9,7 +9,7 @@ import { SourceMapConsumer } from 'source-map';
 class EventsNew extends Component{  // Component = React.Component
   constructor(props){
     super(props);
-    //this.onSubmit = this.onSubmit.bind(this);
+    //this.onSubmit = this.onSubmit.bind(this); // thisをバインドする
   }
   renderField(field){
     const {input, label, type, meta: {touched, error}} = field;

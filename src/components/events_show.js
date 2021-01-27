@@ -10,6 +10,14 @@ class EventsShow extends Component{  // Component = React.Component
     super(props);
     //this.onSubmit = this.onSubmit.bind(this); // thisをバインドする
   }
+
+  componentDidMount(){
+    const {id} = this.props.match.params;
+    if(id){
+      this.props.getEvent(id);
+    }
+  }
+
   renderField(field){
     const {input, label, type, meta: {touched, error}} = field;
     
@@ -43,7 +51,7 @@ class EventsShow extends Component{  // Component = React.Component
           <div>
             <input type="submit" value="Submit" disabled={pristine || submitting}/>
             <Link to="/">Cancel</Link>
-            <Link onClick={this.onDeleteClick.bind(this)}>Delete</Link>
+            <Link to="/" onClick={this.onDeleteClick.bind(this)}>Delete</Link>
           </div>
 
         </form>
@@ -61,10 +69,15 @@ const validate = values => {
   }
   return errors;
 };
-const mapDispatchToProps = ({
-  deleteEvent
-});
+const mapDispatchToProps = {
+  deleteEvent, getEvent
+};
 
-export default connect(null, mapDispatchToProps)(
-  reduxForm({validate, form: 'eventShowForm'})(EventsShow)
+const mapStateToProps = (state, ownProps)=>{
+  const event = state.events[ownProps.match.params.id];
+  return {initialValues: event, state};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  reduxForm({validate, form: 'eventShowForm', enableReinitialize: true})(EventsShow)
 )

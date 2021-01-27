@@ -30,7 +30,7 @@ class EventsShow extends Component{  // Component = React.Component
   }
 
   async onSubmit(values){
-    //await this.props.postEvent(values);
+    await this.props.putEvent(values);
     this.props.history.push('/'); // 初期ページに移動する
   }
 
@@ -41,7 +41,7 @@ class EventsShow extends Component{  // Component = React.Component
   }
 
   render(){
-    const {handleSubmit, pristine, submitting} = this.props;
+    const {handleSubmit, pristine, submitting, invalid} = this.props;
     return (
       <React.Fragment>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -49,7 +49,7 @@ class EventsShow extends Component{  // Component = React.Component
           <div><Field label="Body" name="body" type="text" component={this.renderField}/></div>
 
           <div>
-            <input type="submit" value="Submit" disabled={pristine || submitting}/>
+            <input type="submit" value="Submit" disabled={pristine || submitting || invalid}/>
             <Link to="/">Cancel</Link>
             <Link to="/" onClick={this.onDeleteClick.bind(this)}>Delete</Link>
           </div>
@@ -70,7 +70,7 @@ const validate = values => {
   return errors;
 };
 const mapDispatchToProps = {
-  deleteEvent, getEvent
+  deleteEvent, getEvent, putEvent
 };
 
 const mapStateToProps = (state, ownProps)=>{
